@@ -1,0 +1,71 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template/simple-sidebar)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+ #wrapper {
+    overflow-x: hidden;
+ }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  width: 220px;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  box-shadow: 0 3px 20px rgb(140 163 163 / 40%);
+    margin-right: 15px;
+    border-radius: 5px;
+    border: 1px solid rgb(201, 200, 200);
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 2.175rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+.list-group-item {
+  position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid #fdfcfc20 !important;
+}
+#sidebar-wrapper .list-group {
+  width: 13rem;
+  text-align: left;
+  font-size: 14px;
+}
+#navbar_expand_lg{
+  box-shadow: 0 3px 20px rgb(140 163 163 / 10%);
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(233 229 229);
+}
