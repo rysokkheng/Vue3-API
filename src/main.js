@@ -10,7 +10,6 @@ import '@/assets/vendor/bootstrap/js/bootstrap.bundle.min.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
-
 createApp(App)
 .use(VueAxios, axios)
 .use(router)
