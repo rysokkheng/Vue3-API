@@ -4,6 +4,7 @@ import router from  './router'
 
 import './axios'
 import store from './vuex'
+import './assets/css/simple-sidebar.css'
 
 
 import 'bootstrap'

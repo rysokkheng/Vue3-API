@@ -1,5 +1,5 @@
 <template>
-    <div id="login">
+  <div id="login" style="margin-top: 120px;">
        <div class="global-container">
             <div class="card login-form">
             <div class="card-body">
@@ -9,15 +9,15 @@
                     <form @submit.prevent="handleSubmit">
                         <!-- to error: add class "has-danger" -->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Username</label>
+                            <label style="float: left;">Username</label>
                             <input type="username" v-model="username" class="form-control form-control-sm" id="username">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
+                            <label style="float: left;">Password</label>
                             <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
                             <input type="password" v-model="password" class="form-control form-control-sm" id="password">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block" style="font-size: 15px;">Login</button>
                         
                         <div class="sign-up">
                             Don't have an account? <router-link to="/register"> Create Account</router-link>
@@ -31,13 +31,10 @@
 </template>
 <script>
 import axios from 'axios'
-import Error from './Error'
-
 export default {
     name : 'Login',
-    components:{
-        Error
-    },
+   
+    
     data (){
         return {
             username : '',
@@ -45,8 +42,7 @@ export default {
             error : ''
         }
     },
-
-    methods : {
+     methods : {
       async handleSubmit(){
           try{
                 const response = await axios.post('login',{
@@ -61,44 +57,6 @@ export default {
           }
         }
     }
+
 }
 </script>
-<style>
-.global-container{
-	height:100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-}
-
-form{
-	padding-top: 10px;
-	font-size: 14px;
-	margin-top: 30px;
-}
-
-.card-title{ font-weight:300; }
-
-.btn{
-	font-size: 14px;
-	margin-top:20px;
-}
-
-
-.login-form{ 
-	width:330px;
-	margin:20px;
-}
-
-.sign-up{
-	text-align:center;
-	padding:20px 0 0;
-}
-
-.alert{
-	margin-bottom:-30px;
-	font-size: 13px;
-	margin-top:20px;
-}
-</style>

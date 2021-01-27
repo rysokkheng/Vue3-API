@@ -1,5 +1,5 @@
 <template>
-    <div id="register">
+    <div id="register" style="height: 1200px">
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="card">
@@ -27,7 +27,7 @@
                             
                             <div class="d-flex flex-row align-items-center justify-content-between">
                                 <router-link to="/login">Login</router-link>
-                                <button class="btn btn-primary">Create Account</button>
+                                <button class="btn btn-primary" style="font-size: 15px;">Create Account</button>
                             </div>
                         </form>
                     </div>
