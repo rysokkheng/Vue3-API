@@ -1,4 +1,4 @@
-# vue3-api
+# vueapp
 
 ## Project setup
 ```
