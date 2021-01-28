@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <label style="float: left;">Password</label>
                             <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-                            <input type="password" v-model="password" class="form-control form-control-sm" id="password">
+                            <input type="password" v-model="password" class="form-control" id="password">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" style="font-size: 15px;">Login</button>
                         
