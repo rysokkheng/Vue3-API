@@ -1,6 +1,6 @@
 <template>
      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" id="navbar_expand_lg" v-if="user">
-       <center class="timezone">{{todayDate}}</center>
+       <center class="timezone">{{time}}</center>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item profile">  <router-link to="/profiles" >Profiles</router-link></li>
@@ -19,9 +19,10 @@ export default {
      name : 'NavBar',
       data () {
       return {
-        todayDate: moment().format('MMMM Do YYYY, h:mm:ss a')
+         date: moment()
       }
     },
+
      methods : {
       handleClick(){
         localStorage.removeItem('token');
@@ -29,8 +30,17 @@ export default {
         this.$router.push('/login');
       }
     },
+
     computed : {
-      ...mapGetters(['user'])
+      ...mapGetters(['user']),
+      time: function(){
+        return this.date.format('MMMM Do YYYY, h:mm:ss a');
+      }
+    },
+     mounted: function(){   
+      setInterval(() => {
+        this.date = moment(this.date.add(1, 'seconds'))
+      }, 1000);
     }
 }
 </script>

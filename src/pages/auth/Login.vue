@@ -50,6 +50,7 @@ export default {
                 password : this.password
           });
                 localStorage.setItem('token',response.data.data);
+                localStorage.setItem('expiredate',response.data.user)
                 this.$store.dispatch('user',response.data.user);
                 window.location.href = '/'
            }catch (e){
