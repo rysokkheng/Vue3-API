@@ -4,6 +4,10 @@
   <div class="twomain">
     <div class="table-responsive">
         <div class="table-wrapper">
+             <div class="loader" v-if="loading">
+                <span class="helper"></span>
+                <img class="loaderImg" src="@/assets/ajax-loader.gif">
+            </div>
 		<div id="user-profile-2" class="user-profile">
 				<div class="tabbable">
 					<div class="tab-content no-border padding-24">
@@ -92,7 +96,8 @@ import axios from 'axios'
 export default {
 	data (){
 		return{
-			itemPro :[],
+            itemPro :[],
+            loading: false,
 		}
 	},
 	created : function(){
@@ -100,8 +105,10 @@ export default {
 	},
 	methods : {
 		getProfile(){
+            this.loading = true;
 			axios.get('users/profiles').then(response =>{
-				this.itemPro = response.data.data.data;
+                this.itemPro = response.data.data.data;
+                 this.loading = false;
 			}).catch((error)=>{
 				console.log(error);
 			})

@@ -7,6 +7,7 @@ import Permissions from './pages/permissions/index'
 import Roles from './pages/roles/index'
 import Users from './pages/users/index'
 import Profiles from './pages/auth/Profiles'
+import Setting from './pages/setting/index'
 
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
         {path : '/roles',component : Roles},
         {path : '/users',component : Users},
         {path : '/profiles',component : Profiles},
+        {path : '/setting',component : Setting},
 
     
 ];

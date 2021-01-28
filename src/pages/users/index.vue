@@ -1,5 +1,100 @@
 <template>
     <div id="Users">
-        <h1>Users</h1>
+       <div class="allmain">
+            <div class="title-main">Users List</div>
+            <div class="twomain">
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <div class="loader" v-if="loading">
+                            <span class="helper"></span>
+                            <img class="loaderImg" src="@/assets/ajax-loader.gif">
+                        </div>
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                   <button class="btn btn-primary" id="btn_created" type="submit">Add New Users</button>
+                                </div>
+                                <div class="col-sm-7">
+                                </div>
+                                <div class="col-sm-3">
+                                <input type="text" v-model="search" class="form-control" id="telefoon" style="font-size: 15px;" placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                <th sty v-for="colum in headers" v-bind:key="colum.id">
+                                    {{colum.text}}
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in filteredItems " v-bind:key="index">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.fullname }}</td>
+                                    <td>{{ item.username }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td>{{ item.phone }}</td>
+                                    <td>{{ item.created_at }}</td>
+                                    <td>
+                                        <a href="javascript:void(0)"><span style="font-size: 1.2em; color: green;"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></span></a>
+                                        <a href="javascript:void(0)"><span style="font-size: 1.2em; color: Dodgerblue;"><i class="fa fa-edit fa-fw" aria-hidden="true"></i></span></a>
+                                        <a href="javascript:void(0)"><span style="font-size: 1.2em; color: red;"><i class="fa fa-minus-circle fa-fw" aria-hidden="true"></i></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                </div>  
+            </div>
+        </div>
     </div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+    data(){
+        return{
+            search:'',
+            loading: false,
+             headers: [
+                { text: 'No', value: 'id' },
+                { text: 'Fullname', value: 'fullname' },
+                { text: 'Username', value: 'username' },
+                { text: 'Email', value: 'email' },
+                { text: 'Phone', value: 'phone' },
+                {text:  'Create Date', value: 'created_at'},
+                { text: 'Action', value: 'action', sortable: false }
+            ],
+            items: [],
+        }
+    },
+    created : function(){
+        this.getUser()
+    },
+    methods : {
+        getUser(){
+             this.loading = true;
+            axios.get('users').then(response =>{
+                this.items = response.data.data.data;
+                 this.loading = false;
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+    },
+    computed: {
+        filteredItems() {
+        var self = this;
+        return this.items.filter(item => {
+            return item.fullname.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 
+                || item.username.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 
+                || item.phone.toLowerCase().indexOf(self.search.toLowerCase()) >= 0;
+                
+        }) 
+        }
+    }
+}
+</script>

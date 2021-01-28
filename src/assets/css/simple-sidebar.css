@@ -13,9 +13,10 @@ color: #2c3e50;
 }
 .timezone{
   width: 300px;
-    color: blue;
-    font-size: 14px;
-    text-align: center;
+  color: blue;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
 }
 #nav {
 padding: 30px;
@@ -249,6 +250,7 @@ color: #42b983;
 
 .loaderImg {
   display: block;
+  text-align: center;
   max-height: 100px;
   max-width: 160px;
 }
@@ -273,13 +275,16 @@ color: #42b983;
 }
 .title-main{
   padding: 10px;
-  font-family: 'Nunito', sans-serif ;
-  background: rgb(204 217 231);
-  font-size: 20px;
-  border-radius: 3px;
-  text-align: center;
-  border: 1px solid  #607079 ;
-  margin-left: -1px;
+    font-family: 'Nunito', sans-serif;
+    background: rgb(239 243 248);
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 3px;
+    text-align: left;
+    border: 1px solid #c5ced3;
+    margin-left: -1px;
+    color: #0722e3;
+
 
 }
 .form-control{
@@ -373,6 +378,15 @@ form{
 
 .profile a {
   padding: 10px;
-    font-size: 14px;
-    text-decoration: none;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#btn_created{
+  text-align: left;
+  margin-top: 0px;
+  float: left;
+  font-size: 14px;
+  padding: 7px 12px 7px 12px;
 }
