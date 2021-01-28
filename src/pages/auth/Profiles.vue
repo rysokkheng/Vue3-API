@@ -101,7 +101,6 @@ export default {
 	methods : {
 		getProfile(){
 			axios.get('users/profiles').then(response =>{
-				console.log(response.data.data.data);
 				this.itemPro = response.data.data.data;
 			}).catch((error)=>{
 				console.log(error);

@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 
-
 const state = {
     user : null
 };

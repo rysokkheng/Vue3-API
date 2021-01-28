@@ -8,8 +8,9 @@ import Roles from './pages/roles/index'
 import Users from './pages/users/index'
 import Profiles from './pages/auth/Profiles'
 
+
 const routes = [
-        {path : '/' , component : Dashboard},
+        {path : '/' , component : Dashboard },
         {path : '/login',component : Login},
         {path : '/register',component : Register},
         {path : '/products',component : Products},
@@ -17,8 +18,12 @@ const routes = [
         {path : '/roles',component : Roles},
         {path : '/users',component : Users},
         {path : '/profiles',component : Profiles},
+
     
 ];
+
+
+
 const router = createRouter({
     history: createWebHistory(),
     routes,
