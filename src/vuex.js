@@ -1,7 +1,9 @@
 import Vuex from 'vuex'
 
 const state = {
-    user : null
+    user : null,
+    authenticated : false
+
 };
 
 export default  new Vuex.Store({
@@ -19,6 +21,9 @@ export default  new Vuex.Store({
     mutations : {
         user(state,user){
             state.user = user;
+        },
+        setAuthentication(state,status){
+            state.authenticated = status;
         }
     }
 });

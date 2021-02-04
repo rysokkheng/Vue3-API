@@ -49,9 +49,9 @@ export default {
                 username : this.username,
                 password : this.password
           });
-                localStorage.setItem('token',response.data.data);
-                localStorage.setItem('expiredate',response.data.user)
-                this.$store.dispatch('user',response.data.user);
+                localStorage.setItem('token',response.data.data.data);
+                this.$store.commit("setAuthentication",true)
+                this.$store.dispatch('user',response.data.data.data);
                 window.location.href = '/'
            }catch (e){
                this.error = 'Invalide username/password'

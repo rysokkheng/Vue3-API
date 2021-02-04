@@ -29,9 +29,6 @@ export default {
     async created(){
        const response = await axios.get('users/profiles');
        this.$store.dispatch('user',response.data.data.data);
-      
     }
-  
- 
 }
 </script>

@@ -12,7 +12,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-2">
-                                   <button class="btn btn-primary" id="btn_created" type="submit">Add New Permissions</button>
+                                   <router-link to="/permissions/create" class="btn btn-primary" id="btn_created" type="submit">Add New Permissions</router-link>
                                 </div>
                                 <div class="col-sm-7">
                                 </div>
@@ -43,10 +43,20 @@
                                     </td>
                                 </tr>
                             </tbody>
-                        </table>
-                       <div class="card-footer pb-0 pt-3">
-                            <jw-pagination :items="items" @changePage="onChangePage"></jw-pagination>
-                        </div>
+                        </table><br/><br/>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>  
             </div>
@@ -80,13 +90,14 @@ export default {
         getPermission(){
              this.loading = true;
             axios.get('permission').then(response =>{
-                console.log(response.data.data.data)
-                this.items = response.data.data.data;
-                 this.loading = false;
+                this.items = response.data.data.data
+                console.log(response.data.data.meta)
+                // this.makePagination(response.data.data.meta)
+                this.loading = false;
             }).catch((err)=>{
                 console.log(err)
             })
-        },
+        }
         
     },
     computed: {
