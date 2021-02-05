@@ -9,6 +9,7 @@ import Users from './pages/users/index'
 import Profiles from './pages/auth/Profiles'
 import Setting from './pages/setting/index'
 import CreatePermission from './pages/permissions/create'
+import moment from 'moment'
 
 const routes = [
         {path : '/' ,  name: 'dashboard', component : Dashboard,
@@ -58,12 +59,15 @@ const router = createRouter({
   
   router.beforeEach((to, from, next) => {
         if(to.matched.some(record => record.meta.requiresAuth)) {
+            if(localStorage.getItem('expires_in') < moment(new Date()).format("YYYY-MM-DD hh:mm:ss")){
+                localStorage.removeItem('token')
+            }
             if (localStorage.getItem('token') == null) {
                 next({
                     path: '/login',
                     params: { nextUrl: to.fullPath }
                 })
-            } else {
+            } else {     
                 let user = JSON.parse(localStorage.getItem('user'))
                 if(to.matched.some(record => record.meta.is_admin)) {
                     if(user.is_admin == 1){

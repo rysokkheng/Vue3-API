@@ -33,8 +33,6 @@
 import axios from 'axios'
 export default {
     name : 'Login',
-   
-    
     data (){
         return {
             username : '',
@@ -50,6 +48,7 @@ export default {
                 password : this.password
           });
                 localStorage.setItem('token',response.data.data.data);
+                localStorage.setItem('expires_in',response.data.data.expires_in);
                 this.$store.commit("setAuthentication",true)
                 this.$store.dispatch('user',response.data.data.data);
                 window.location.href = '/'

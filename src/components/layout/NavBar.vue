@@ -26,6 +26,7 @@ export default {
      methods : {
       handleClick(){
         localStorage.removeItem('token');
+        localStorage.removeItem('expires_in');
         this.$store.dispatch('user',null);
         this.$router.push('/login');
       }

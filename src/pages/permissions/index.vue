@@ -34,7 +34,7 @@
                                     <td>{{ item.id }}</td>
                                     <td>{{ item.name }}</td>
                                     <td>{{ item.display_name_en }}</td>
-                                     <td>{{ item.display_name_kh }}</td>
+                                    <td>{{ item.display_name_kh }}</td>
                                     <td>{{ item.created_at }}</td>
                                     <td>
                                         <a href="javascript:void(0)"><span style="font-size: 1.2em; color: green;"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></span></a>
@@ -49,9 +49,10 @@
                                 <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1">Previous</a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                 <li class="page-item" v-for="tot in total_pages" v-bind:key="tot.index">
+                                     <a class="page-link" href="#">{{tot.total_pages}} of {{tot.total_pages}} </a>
+                                </li>
+                              
                                 <li class="page-item">
                                 <a class="page-link" href="#">Next</a>
                                 </li>
@@ -81,6 +82,10 @@ export default {
                 { text: 'Action', value: 'action', sortable: false }
             ],
             items: [],
+            total :0,
+            total_pages : 0,
+            count : 0,
+
         }
     },
     created : function(){
@@ -92,7 +97,7 @@ export default {
             axios.get('permission').then(response =>{
                 this.items = response.data.data.data
                 console.log(response.data.data.meta)
-                // this.makePagination(response.data.data.meta)
+                this.total_pages = response.data.data.meta
                 this.loading = false;
             }).catch((err)=>{
                 console.log(err)
